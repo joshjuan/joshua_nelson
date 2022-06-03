@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    @include('contacts.layouts.partials.navbar')
+    @include('layouts.partials.navbar')
 
     <main class="container">
         @yield('content')

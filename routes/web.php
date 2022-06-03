@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +18,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     /**
      * Home Routes
      */
-    Route::get('/', 'HomeController@index')->name('home.index');
+   Route::get('/', 'HomeController@index')->name('home.index');
 
     Route::group(['middleware' => ['guest']], function() {
         /**
@@ -45,7 +45,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     });
 });
 
-//Route::resource('contacts','App\Http\Controllers\ContactController');
+Route::resource('contacts','App\Http\Controllers\ContactController');
 
-use App\Http\Controllers\ContactController;
 Route::resource('contacts', ContactController::class);
+Route::post('add', [ContactController::class,'add']);
+Route::get('add', [ContactController::class,'add']);
+Route::get('index', [ContactController::class,'view']);
+Route::get('view', [\App\Http\Controllers\ListController::class,'view']);
+//Route::get('contact', [\App\Http\Controllers\ContactController::class,'edit']);
+Route::get('contact{id}', [\App\Http\Controllers\ContactController::class,'josh']);
+
+
+

@@ -1,4 +1,4 @@
-@extends('contacts.layouts.app-master')
+@extends('layouts.app-master')
 
 @section('content')
     <div class="bg-light p-5 rounded">
@@ -32,23 +32,32 @@
                         <th>MOBILE</th>
                         <th>ACTION</th>
                         <th width="280px">Action</th>
-                    </tr>
-{{--                    @foreach ($contacts as $contact)--}}
-{{--                        <tr>--}}
-{{--                            <td>{{ $contact->id }}</td>--}}
-{{--                            <td>{{ $contact->first_name }}</td>--}}
-{{--                            <td>{{ $contact->email }}</td>--}}
-{{--                            <td>{{ $contact->mobile }}</td>--}}
-{{--                            <td>--}}
-{{--                                <form action="{{ route('contacts.destroy',$company->id) }}" method="Post">--}}
-{{--                                    <a class="btn btn-primary" href="{{ route('contacts.edit',$company->id) }}">Edit</a>--}}
-{{--                                    @csrf--}}
-{{--                                    @method('DELETE')--}}
-{{--                                    <button type="submit" class="btn btn-danger">Delete</button>--}}
-{{--                                </form>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
+                    </tr>     <tbody>
+                    @foreach($contacts as $contact)
+                        <tr>
+
+                            <td>{{$contact->id }}</td>
+                            <td>{{$contact->first_name }}</td>
+                            <td>{{$contact->last_name }}</td>
+                            <td>{{$contact->tittle }}</td>
+                            <td>{{$contact->district }}</td>
+                            <td>{{$contact->region }}</td>
+                            <td>{{$contact->email }}</td>
+                            <td>{{$contact->mobile }}</td>
+
+                            <td>
+                                <a href="{{ url('contact').$contact->id}}" class="btn btn-primary">Edit</a>
+
+                                <form action="{{ route('contacts.destroy', $contact->id)}}" method="post">
+                                    @csrf @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
                 </table>
 
 

@@ -1,4 +1,4 @@
-@extends('contacts.layouts.auth-master')
+@extends('layouts.auth-master')
 
 @section('content')
     <form method="post" action="{{ route('login.perform') }}">
@@ -8,7 +8,7 @@
 
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
-        @include('contacts.layouts.partials.messages')
+        @include('layouts.partials.messages')
 
         <div class="form-group form-floating mb-3">
             <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus>
@@ -31,7 +31,12 @@
             <input type="checkbox" name="remember" value="1">
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <div class="row">
+            <div class="col-sm-12">
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+            </div>
+        </div>
+
 
         @include('auth.partials.copy')
     </form>

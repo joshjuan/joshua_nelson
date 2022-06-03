@@ -9,7 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $contacts=Contact::get();
+
+        return view('home.index',compact('contacts'));
+       // return view('home.index');
     }
 
     public function contact()
